@@ -139,8 +139,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 django_on_heroku.settings(locals(),staticfiles=False)
 
 #Email Config
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_PORT = 25
-EMAIL_HOST_USER =  'apikey'
-EMAIL_HOST_PASSWORD = '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'
-EMAIL_USE_TLS = True
+EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
+# Toggle sandbox mode (when running in DEBUG mode)
+SENDGRID_SANDBOX_MODE_IN_DEBUG=True
+# echo to stdout or any other file-like object that is passed to the backend via the stream kwarg.
+SENDGRID_ECHO_TO_STDOUT=True
+SENDGRID_API_KEY='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'
