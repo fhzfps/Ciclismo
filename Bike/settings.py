@@ -138,10 +138,10 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 django_on_heroku.settings(locals(),staticfiles=False)
 
-#Email Config
-EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
-# Toggle sandbox mode (when running in DEBUG mode)
-SENDGRID_SANDBOX_MODE_IN_DEBUG=True
-# echo to stdout or any other file-like object that is passed to the backend via the stream kwarg.
-SENDGRID_ECHO_TO_STDOUT=True
-SENDGRID_API_KEY='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'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey' # this is exactly the value 'apikey'
+EMAIL_HOST_PASSWORD = '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' # this is your API key
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = 'info@wattscycle.com.br' # this is the sendgrid email
