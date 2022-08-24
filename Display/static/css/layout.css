@@ -1,0 +1,74 @@
+/*Config do Box-Sizing*/
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+/*Estilo Body*/
+body{
+  margin:0;
+  background-image:linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),url("../media/bg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+/*Flexbox-Responsiveness*/
+.flex_row{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:row;
+  flex-wrap: wrap;
+}
+.flex_col_stretch{
+  display:flex;
+  justify-content: center;
+  align-items:stretch;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.flex_col_center{
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+/*Cartões-Destaque*/
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+  transition: 0.3s;
+  border-radius: 5px;
+  flex: 1 1 auto;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+}
+
+.container {
+  padding: 2px 16px;
+  flex:1 1 auto;
+}
+
+.video_container{
+  flex:1 1 auto;
+}
+video{
+  padding: 2px 16px;
+  border:cover;
+  height:auto;
+}
+@media screen and (max-width: 800px){
+  video{
+    width:50%;
+ }
+ @media screen and (max-width: 650px){
+   video{
+     width:30%;
+  }
+  @media screen and (max-width: 400px){
+    video{
+      width:10%;
+   }

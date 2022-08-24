@@ -1,0 +1,72 @@
+/*Navbar-Responsiveness*/
+
+/* Desktop*/
+.flex_nav{
+  box-sizing: border-box;
+  display:flex;
+  justify-content:space-between;
+  align-items:stretch;
+  flex-direction:row;
+  flex-wrap: nowrap;
+  background-color: #333;
+}
+.flex_nav>div{
+  flex: 1 1 auto;
+  text-align: center;
+  padding: 12px 18px;
+  font-size: 20px;
+  font-family: monospace;
+}
+.flex_nav>div:hover{
+  background-color: #111;
+}
+.flex_nav>div>a{
+  text-decoration: none;
+  color: white;
+}
+/*Mobile*/
+ .flex_nav_mob{
+  box-sizing: border-box;
+  display:none;
+  justify-content:space-between;
+  align-items:stretch;
+  flex-direction:column;
+  flex-wrap: wrap;
+  background-color: #333;
+}
+.flex_nav_mob>div{
+  flex: 1 1 auto;
+  text-align: center;
+  padding: 12px 18px;
+  font-size: 20px;
+  font-family: monospace;
+}
+.flex_nav_mob>div:hover{
+  background-color: #111;
+  transition: 0.1s;
+}
+.flex_nav_mob>div>a{
+  text-decoration: none;
+  color: white;
+}
+.flex_nav_mob>.dropdown{
+  height:0;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #333;
+  overflow-x: hidden;
+  overflow-y:scroll;
+  transition: 0s;
+}
+/* Ajustar Navbar para Mobile*/
+@media screen and (max-width: 1000px){
+  .flex_nav{
+    display:none;
+  }
+  .flex_nav_mob{
+    display:flex;
+  }
+  }

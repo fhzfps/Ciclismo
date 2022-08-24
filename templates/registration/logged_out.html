@@ -1,0 +1,21 @@
+{% load static %}
+<!doctype html>
+<html>
+  <head>
+    {% include './form_header.html' %}
+  </head>
+  <body>
+    {% include './form_navbar.html' %}
+    {% block content %}
+  <section class='flex_col_center'>
+    <div class='card'>
+      <div class='container'>
+        <h1>Deslogado!</h1>
+        <h1><a href="{% url 'login' %}">Clique aqui para logar novamente.</a></h1>
+      </div>
+    </div>
+  </section>
+  {% endblock %}
+    {% include './form_footer.html' %}
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<html>
+  <head>
+    {% include './form_header.html' %}
+  </head>
+  <body>
+    {% include './form_navbar.html' %}
+    {% block content %}
+
+     {% if form.errors %}
+     <section class='flex_col_stretch'>
+       <div class='card'>
+         <div class='container'>
+           <h2>Usuário e Senha Incorretos, tente novamente.</h2>
+         </div>
+       </div>
+     </section>
+     {% endif %}
+     {% if next %}
+       {% if user.is_authenticated %}
+     <section class='flex_col_stretch'>
+       <div class='card'>
+         <div class='container'>
+           <h2>Sua conta não tem acesso a esta página. Acesse outra página ou faça login com uma conta que possua acesso.</h2>
+         </div>
+       </div>
+     </section>
+       {% else %}
+     <section class='flex_col_stretch'>
+       <div class='card'>
+         <div class='container'>
+           <h2>Faça login para acessar a página.</h2>
+         </div>
+       </div>
+     </section>
+       {% endif %}
+     {% endif %}
+
+   <form method="post" action="{% url 'login' %}">
+     {% csrf_token %}
+     <section class='flex_col_center'>
+       <div class='fields'>
+         <h1>{{ form.username.label_tag }}</h1>
+         <h2>{{ form.username }}</h2>
+       </div>
+       <br>
+       <div class='fields'>
+         <h1>{{ form.password.label_tag }}</h1>
+         <h2>{{ form.password }}</h2>
+       </div>
+       <br><br>
+       <div class='buttons'>
+         <input type="submit" value="Login"/>
+         <input type="hidden" name="next" value="{{ next }}" />
+       </div>
+     </section>
+   </form>
+   <br><br><br><br>
+
+  <h1><a href="{% url 'password_reset' %}">Perdeu a senha ?</a></h1>
+  {% endblock %}
+    {% include './form_footer.html' %}
+  </body>
+</html>

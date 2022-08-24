@@ -1,0 +1,48 @@
+{% load static %}
+<section class='flex_nav'>
+  <div>
+    <a href="/">Página Inicial</a>
+  </div>
+    {% block navbar_mob %}
+      {% if request.user.is_authenticated %}
+      <div>
+        <a href="/accounts/logout">Logout</a>
+      </div>
+      {% else %}
+      <div>
+        <a href="/accounts/login">Login</a>
+      </div>
+      <div>
+        <a href="/accounts/register">Registre-se</a>
+      </div>
+      {% endif %}
+    {% endblock %}
+</section>
+<section class='flex_nav_mob'>
+  <div>
+    <a href="javascript:void(0)" onclick="openNav()">Menu</a>
+  </div>
+  <section id='mobnav' class='flex_nav_mob dropdown'>
+    <div>
+      <a href="javascript:void(0)" onclick="closeNav()">Fechar Menu</a>
+    </div>
+    <div>
+      <a href="/">Página Inicial</a>
+    </div>
+    {% block navbar %}
+      {% if request.user.is_authenticated %}
+      <div>
+        <a href="/accounts/logout">Logout</a>
+      </div>
+      {% else %}
+      <div>
+        <a href="/accounts/login">Login</a>
+      </div>
+      <div>
+        <a href="/accounts/register">Registre-se</a>
+      </div>
+      {% endif %}
+    {% endblock %}
+  </section>
+</section>
+<br>

@@ -1,0 +1,55 @@
+<html>
+  <head>
+    {% include './form_header.html' %}
+  </head>
+  <body>
+    {% include './form_navbar.html' %}
+    {% if register_form.errors %}
+    {% for field in register_form %}
+    {% for error in field.errors %}
+    <section class='flex_col_stretch'>
+      <div class='card'>
+        <div class='container'>
+          <h2>Erro em {{field.label_tag}}:</h2>
+          <h2>{{error}}</h2>
+        </div>
+      </div>
+    </section>
+    {% endfor %}
+    {% endfor %}
+    {% endif %}
+    <h1>Registre-se</h1>
+    <br>
+    <form method="POST">
+      {% csrf_token %}
+      <section class='flex_col_center'>
+        <div class='fields'>
+          <h1 style='font-size:30px;'>{{register_form.username.label_tag}}</h1>
+          <h2>{{register_form.username}}</h2>
+        </div>
+          <br>
+        <div class='fields'>
+          <h1 style='font-size:30px;'>{{register_form.email.label_tag}}</h1>
+          <h2>{{register_form.email}}</h2>
+        </div>
+          <br>
+        <div class='fields'>
+          <h1 style='font-size:30px;'>{{register_form.password1.label_tag}}</h1>
+          <h2>{{register_form.password1}}</h2>
+        </div>
+          <br>
+        <div class='fields'>
+          <h1 style='font-size:30px;'>{{register_form.password2.label_tag}}</h1>
+          <h2>{{register_form.password2}}</h2>
+        </div>
+        <br>
+        <div class='buttons'>
+          <input type="submit" value='Registrar' style='left:45.9%;'></input>
+        </div>
+      </section>
+     </form>
+     <br><br>
+    <h1>Se já tem uma conta, Faça <a href="/accounts/login">Login</a></h1>
+    {% include './form_footer.html' %}
+  </body>
+</html>

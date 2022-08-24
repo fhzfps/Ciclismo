@@ -1,0 +1,81 @@
+/*Formulários-Responsiveness-Adaptação para Django*/
+form>.flex_col_center>.buttons{
+  flex: 1 1 auto;
+
+}
+form>.flex_col_center>.fields{
+  flex: 1 1 auto;
+}
+form>.flex_col_center>.fields>h2>input[type='text']{
+  font-family:monospace;
+  font-weight: bold;
+  background-color: #d3d3d3;
+  font-size: 20px;
+  text-align:center;
+  flex: 1 1 auto;
+}
+form>.flex_col_center>.fields>h2>input[type='number']{
+  font-family:monospace;
+  font-weight: bold;
+  background-color: #d3d3d3;
+  font-size: 20px;
+  text-align:center;
+  flex: 1 1 auto;
+}
+form>.flex_col_center>.fields>h2>input[type='email']{
+  font-family:monospace;
+  font-weight: bold;
+  background-color: #d3d3d3;
+  font-size: 20px;
+  text-align:center;
+  flex: 1 1 auto;
+}
+form>.flex_col_center>.fields>h2>input[type='password']{
+  font-family:monospace;
+  font-weight: bold;
+  background-color:#d3d3d3;
+  font-size: 20px;
+  text-align:center;
+  flex: 1 1 auto;
+}
+form>.flex_col_center>.buttons>input[type='submit']{
+  flex: 1 1 auto;
+  font-family:monospace;
+  font-weight: bold;
+  font-size: 20px;
+  text-align:center;
+  color: black;
+  text-decoration: none;
+  border: none;
+  background-color:#d3d3d3;
+  padding: 15px 32px;
+}
+form>.flex_col_center>.fields>select{
+  font-family:monospace;
+  font-weight: bold;
+  background-color: #d3d3d3;
+  font-size: 20px;
+  text-align:center;
+  flex: 1 1 auto;
+  max-width:15em;
+}
+
+form>.flex_col_center>.fields>h2>input[type='text']:focus{
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  outline:none;
+}
+form>.flex_col_center>.fields>h2>input[type='number']:focus{
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  outline:none;
+}
+form>.flex_col_center>.fields>h2>input[type='email']:focus{
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  outline:none;
+}
+form>.flex_col_center>.fields>h2>input[type='password']:focus{
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  outline:none;
+}
+form>.flex_col_center>.buttons>input[type='submit']:hover{
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
