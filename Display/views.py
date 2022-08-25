@@ -29,3 +29,27 @@ def register(request):
     form = forms.NovoUsuario()
     context={"register_form":form}
     return HttpResponse(template.render(context,request))
+
+@login_required
+def perfil(request):
+    template=loader.get_template('perfil.html')
+    return HttpResponse(template.render(request=request))
+
+@login_required
+def perfil_form(request):
+    template=loader.get_template('registration/perfil_form.html')
+    if request.method=='POST':
+        form=forms.NovoPerfil(request.POST)
+        if form.is_valid():
+            request.user.perfil.nome=request.POST['nome']
+            request.user.perfil.ftp=request.POST['ftp']
+            request.user.perfil.peso=request.POST['peso']
+            request.user.perfil.altura=request.POST['altura']
+            request.user.perfil.idade=request.POST['idade']
+            request.user.perfil.save()
+            return HttpResponseRedirect('/accounts/perfil')
+        else:
+            return HttpResponse(template.render(context={'register_form':form},request=request))
+    form=forms.NovoPerfil()
+    context={'register_form':form}
+    return HttpResponse(template.render(context=context,request=request))

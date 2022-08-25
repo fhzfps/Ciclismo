@@ -30,3 +30,14 @@ class NovoUsuario(UserCreationForm):
       if commit:
         user.save()
         return user
+
+class NovoPerfil(forms.ModelForm):
+    class Meta:
+        model=models.Perfil
+        fields=("nome","idade","ftp",'peso','altura')
+        labels={'nome':'Nome:','idade':'Idade:','ftp':'FTP','peso':'Peso','altura':'Altura'}
+    def save(self,commit=True):
+        Perfil=super(NovoPerfil,self).save(commit=False)
+        if commit:
+            Perfil.save()
+        return Perfil

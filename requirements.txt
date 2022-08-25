@@ -18,3 +18,5 @@ matplotlib
 seaborn
 django-sendgrid-v5
 sendgrid
+python-tcxparser
+plotly

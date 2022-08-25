@@ -1,0 +1,60 @@
+<html>
+  <head>
+    {% include './form_header.html' %}
+  </head>
+  <body>
+    {% include './form_navbar.html' %}
+    {% if register_form.errors %}
+    {% for field in register_form %}
+    {% for error in field.errors %}
+    <section class='flex_col_stretch'>
+      <div class='card'>
+        <div class='container'>
+          <h2>Erro em {{field.label_tag}}:</h2>
+          <h2>{{error}}</h2>
+        </div>
+      </div>
+    </section>
+    {% endfor %}
+    {% endfor %}
+    {% endif %}
+    <h1>Registre Suas Informações de Perfil</h1>
+    <br>
+    <form method="POST">
+      {% csrf_token %}
+      <section class='flex_col_center'>
+        <div class='fields'>
+          <h1 style='font-size:30px;'>{{register_form.nome.label_tag}}</h1>
+          <h2>{{register_form.nome}}</h2>
+        </div>
+          <br>
+        <div class='fields'>
+          <h1 style='font-size:30px;'>{{register_form.ftp.label_tag}}</h1>
+          <h2>{{register_form.ftp}}</h2>
+        </div>
+        <br>
+        <div class='fields'>
+          <h1 style='font-size:30px;'>{{register_form.altura.label_tag}}</h1>
+          <h2>{{register_form.altura}}</h2>
+        </div>
+        <br>
+        <div class='fields'>
+            <h1 style='font-size:30px;'>{{register_form.peso.label_tag}}</h1>
+            <h2>{{register_form.peso}}</h2>
+        </div>
+        <br>
+        <div class='fields'>
+          <h1 style='font-size:30px;'>{{register_form.idade.label_tag}}</h1>
+          <h2>{{register_form.idade}}</h2>
+        </div>
+          <br>
+        <div class='buttons'>
+          <input type="submit" value='Salvar' style='left:45.9%;'></input>
+        </div>
+      </section>
+     </form>
+     <br><br>
+    <h1>Voltar para <a href="/accounts/perfil">Perfil</a></h1>
+    {% include './form_footer.html' %}
+  </body>
+</html>

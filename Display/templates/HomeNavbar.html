@@ -8,6 +8,9 @@
       <div>
         <a href="/accounts/logout">Logout</a>
       </div>
+      <div>
+        <a href="/accounts/perfil">{{request.user.username}}</a>
+      </div>
       {% else %}
       <div>
         <a href="/accounts/login">Login</a>
@@ -33,6 +36,9 @@
       {% if request.user.is_authenticated %}
       <div>
         <a href="/accounts/logout">Logout</a>
+      </div>
+      <div>
+        <a href="/accounts/perfil">{{request.user.username}}</a>
       </div>
       {% else %}
       <div>

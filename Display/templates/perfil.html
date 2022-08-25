@@ -1,0 +1,49 @@
+{% load static %}
+<!doctype html>
+<html>
+  <head>
+    {% include 'HomeHeader.html' %}
+  </head>
+  <body>
+    {% include 'HomeNavbar.html' %}
+      <h1>Perfil De {{request.user.username}}</h1>
+      <section class='flex_col_stretch'>
+        <div class='card'>
+          <div class='container'>
+            <h2>Nome:</h2>
+            <h2>{{request.user.perfil.nome}}</h2>
+          </div>
+        </div>
+        <div class='card'>
+          <div class='container'>
+            <h2>FTP:</<h2>
+            <h2>{{request.user.perfil.ftp}}</h2>
+          </div>
+        </div>
+        <div class='card'>
+          <div class='container'>
+            <h2>Altura:</<h2>
+            <h2>{{request.user.perfil.altura}}</h2>
+          </div>
+        </div>
+        <div class='card'>
+          <div class='container'>
+            <h2>Peso:</<h2>
+            <h2>{{request.user.perfil.peso}}</h2>
+          </div>
+        </div>
+        <div class='card'>
+          <div class='container'>
+            <h2>Idade:</<h2>
+            <h2>{{request.user.perfil.idade}}</h2>
+          </div>
+        </div>
+        <div class='card'>
+          <div class='container'>
+            <h1><a href='/accounts/perfil/alt_perfil'>Alterar Informações</a></h1>
+          </div>
+        </div>
+      </section>
+    {% include 'HomeFooter.html' %}
+  </body>
+</html>
