@@ -58,7 +58,9 @@ def perfil_form(request):
 def treino_form(request):
     template=loader.get_template('registration/treino_form.html')
     if request.method=='POST':
-        form=forms.NovoTreino(request.POST,request.FILES,usuario=request.user,ftp=request.user.perfil.ftp)
+        request.POST['usuario']=request.user
+        request.POST['ftp']=request.user.perfil.ftp
+        form=forms.NovoTreino(request.POST,request.FILES)
         if form.is_valid():
             treino=form.save()
             try:
