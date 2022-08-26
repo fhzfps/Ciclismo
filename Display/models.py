@@ -38,9 +38,9 @@ class Treino(models.Model):
     CMin=models.FloatField(null=True,blank=True)
     Calorias=models.FloatField(null=True,blank=True)
     Distancia=models.FloatField(null=True,blank=True)
-    GraficoPot=models.CharField(max_length=100000,null=True,blank=True)
-    GraficoCad=models.CharField(max_length=100000,null=True,blank=True)
-    GraficoZonas=models.CharField(max_length=100000,null=True,blank=True)
+    GraficoPot=models.TextField(null=True,blank=True)
+    GraficoCad=models.TextField(null=True,blank=True)
+    GraficoZonas=models.TextField(null=True,blank=True)
 
 #Sinais para criação/atualização de Perfil em criação/atualização de Usuário
 @receiver(post_save,sender=User)
