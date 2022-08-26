@@ -15,7 +15,7 @@ class Perfil(models.Model):
     altura=models.FloatField(null=True,blank=True)
 
 def user_dir(instance,filename):
-    return f'user_{instance.user.id}/{filename}'
+    return f'user_{instance.usuario.id}/{filename}'
 
 class Treino(models.Model):
     class FileTypes(models.TextChoices):
