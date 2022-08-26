@@ -58,13 +58,13 @@ def perfil_form(request):
 def treino_form(request):
     template=loader.get_template('registration/treino_form.html')
     if request.method=='POST':
-        request.POST['usuario']=request.user
-        request.POST['ftp']=request.user.perfil.ftp
         form=forms.NovoTreino(request.POST,request.FILES)
         if form.is_valid():
-            treino=form.save()
+            treino=form.save(commit=False)
             try:
-                relatorio=BikeAnalyze(file=treino.arquivo,file_type=treino.tipo_arquivo,ftp=treino.ftp).gerar_relatorio()
+                relatorio=BikeAnalyze(file=treino.arquivo,file_type=treino.tipo_arquivo,ftp=request.user.perfil.ftp).gerar_relatorio()
+                treino.usuario=request.user
+                treino.ftp=request.user.perfil.ftp
                 treino.duracao_s=relatorio['duracao_s']
                 treino.NP=relatorio['NP']
                 treino.IF=relatorio['IF']
@@ -93,6 +93,6 @@ def treino_form(request):
 @login_required
 def editar_treinos(request):
     template=loader.get_template('treinos.html')
-    treino_lst=request.user.Treinos
+    treino_lst=request.user.Treinos.all()
     context={'treino_data':treino_lst}
     return HttpResponse(template.render(context=context,request=request))
