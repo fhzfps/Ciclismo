@@ -10,7 +10,7 @@
     <section class='flex_col_stretch'>
       <div class='card'>
         <div class='container'>
-          <h2>Erro em {{field.label_tag}}:</h2>
+          <h2>Erro em {{field.label_tag}}</h2>
           <h2>{{error}}</h2>
         </div>
       </div>
@@ -20,7 +20,7 @@
     {% endif %}
     <h1>Novo Upload de Treino:</h1>
     <br>
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       <section class='flex_col_center'>
         <div class='fields'>
