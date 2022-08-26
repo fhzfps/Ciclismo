@@ -62,27 +62,27 @@ def treino_form(request):
         if form.is_valid():
             treino=form.save(commit=False)
             relatorio=BikeAnalyze(file=treino.arquivo,file_type=treino.tipo_arquivo,ftp=request.user.perfil.ftp).gerar_relatorio()
-            #try:
-            treino.usuario=request.user
-            treino.ftp=request.user.perfil.ftp
-            treino.duracao_s=relatorio['duracao_s']
-            treino.NP=relatorio['NP']
-            treino.IF=relatorio['IF']
-            treino.PM=relatorio['PM']
-            treino.TTS=relatorio['TTS']
-            treino.CM=relatorio['CM']
-            treino.PMax=relatorio['PMax']
-            treino.PMin=relatorio['PMin']
-            treino.CMax=relatorio['CMax']
-            treino.CMin=relatorio['CMin']
-            treino.Calorias=relatorio['Calorias']
-            treino.Distancia=relatorio['Distancia']
-            treino.GraficoPot=relatorio['GraficoPot']
-            treino.GraficoCad=relatorio['GraficoCad']
-            treino.GraficoZonas=relatorio['GraficoZonas']
-            treino.save()
-            #except:
-                #return HttpResponse(loader.get_template('erro_analise.html').render(request=request))
+            try:
+                treino.usuario=request.user
+                treino.ftp=request.user.perfil.ftp
+                treino.duracao_s=relatorio['duracao_s']
+                treino.NP=relatorio['NP']
+                treino.IF=relatorio['IF']
+                treino.PM=relatorio['PM']
+                treino.TTS=relatorio['TTS']
+                treino.CM=relatorio['CM']
+                treino.PMax=relatorio['PMax']
+                treino.PMin=relatorio['PMin']
+                treino.CMax=relatorio['CMax']
+                treino.CMin=relatorio['CMin']
+                treino.Calorias=relatorio['Calorias']
+                treino.Distancia=relatorio['Distancia']
+                treino.GraficoPot=relatorio['GraficoPot']
+                treino.GraficoCad=relatorio['GraficoCad']
+                treino.GraficoZonas=relatorio['GraficoZonas']
+                treino.save()
+            except:
+                return HttpResponse(loader.get_template('erro_analise.html').render(request=request))
             return HttpResponseRedirect('/accounts/perfil')
         else:
             return HttpResponse(template.render(context={'register_form':form},request=request))
@@ -96,3 +96,19 @@ def editar_treinos(request):
     treino_lst=request.user.Treinos.all()
     context={'treino_data':treino_lst}
     return HttpResponse(template.render(context=context,request=request))
+
+@login_required
+def deletar_treino(request,id):
+    treino=request.user.Treinos.filter(id=id)
+    treino.delete()
+    return HttpResponseRedirect('/accounts/perfil/editar_treinos')
+
+
+@login_required
+def visualizar_treino(request):
+    template=loader.get_template('meus_treinos_form.html')
+    if request.method=='POST':
+        treino=request.user.Treinos.filter(id=int(request.POST['Treinos']))
+        return HttpResponse(loader.get_template('visualizar_treino.html').render(request=request,context={'treino':treino}))
+    user_treinos=request.user.Treinos.all()
+    return HttpResponse(template.render(request=request,context={'user_treino':user_treinos}))

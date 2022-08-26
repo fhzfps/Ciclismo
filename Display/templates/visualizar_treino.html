@@ -1,0 +1,76 @@
+{% load static %}
+<!doctype html>
+<html>
+  <head>
+    {% include 'HomeHeader.html' %}
+  </head>
+  <body>
+    {% include 'HomeNavbar.html' %}
+      <h1>Treino #{{treino.id}}</h1>
+        <section class='flex_col_stretch'>
+        <div class='card'>
+          <div class='container'>
+            <h1>Gráfico de Potência:</h1>
+            {{treino.GraficoPot}}
+          </div>
+        </div>
+        <br>
+        <div class='card'>
+          <div class='container'>
+            <h1>Gráfico de Cadência:</h1>
+            {{treino.GraficoCad}}
+          </div>
+        </div>
+        <br>
+        <div class='card'>
+          <div class='container'>
+            <h1>Gráfico de Zonas de Intensidade:</h1>
+            {{treino.GraficoZonas}}
+          </div>
+        </div>
+        <br>
+        <div class='card'>
+          <div class='container'>
+            <h1>Informações De Potência:</h1>
+            <h2>FTP:{{treino.ftp}}</h2>
+            <h2>Potência Normalizada (NP):{{treino.NP}}</h2>
+            <h2>Potência Média:{{treino.PM}}</h2>
+            <h2>Potência Máxima:{{treino.PMax}}</h2>
+            <h2>Potência Mínima:{{treino.PMin}}</h2>
+          </div>
+        </div>
+        <br>
+        <div class='card'>
+          <div class='container'>
+            <h1>Informações De Potência:</h1>
+            <h2>FTP:{{treino.ftp}}</h2>
+            <h2>Potência Normalizada (NP):{{treino.NP}}</h2>
+            <h2>Potência Média:{{treino.PM}}</h2>
+            <h2>Potência Máxima:{{treino.PMax}}</h2>
+            <h2>Potência Mínima:{{treino.PMin}}</h2>
+          </div>
+        </div>
+        <br>
+        <div class='card'>
+          <div class='container'>
+            <h1>Informações De Cadência:</h1>
+            <h2>Cadência Média:{{treino.CM}}</h2>
+            <h2>Potência Máxima:{{treino.CMax}}</h2>
+            <h2>Potência Mínima:{{treino.CMin}}</h2>
+          </div>
+        </div>
+        <br>
+        <div class='card'>
+          <div class='container'>
+            <h1>Informações Adicionais:</h1>
+            <h2>Fator de Intensidade:{{treino.IF}}</h2>
+            <h2>Nível de Desgaste Causado Pelo Treino (TTS):{{treino.TTS}}</h2>
+            <h2>Calorias Gastas:{{treino.Calorias}</h2>
+            <h2>Duração do Trieno em Segundos:{{treino.duracao_s}</h2>
+            <h2>Distância Percorrida em Metros:{{treino.Distancia}</h2>
+          </div>
+        </div>
+      </section>
+    {% include 'HomeFooter.html' %}
+  </body>
+</html>

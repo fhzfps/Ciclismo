@@ -1,0 +1,44 @@
+<html>
+  <head>
+    {% include './form_header.html' %}
+  </head>
+  <body>
+    {% include './form_navbar.html' %}
+    {% if register_form.errors %}
+    {% for field in register_form %}
+    {% for error in field.errors %}
+    <section class='flex_col_stretch'>
+      <div class='card'>
+        <div class='container'>
+          <h2>Erro em {{field.label_tag}}</h2>
+          <h2>{{error}}</h2>
+        </div>
+      </div>
+    </section>
+    {% endfor %}
+    {% endfor %}
+    {% endif %}
+    <h1>Visualizar Treino:</h1>
+    <br>
+    <form method="POST">
+      {% csrf_token %}
+      <section class='flex_col_center'>
+        <div class='fields'>
+          <h1 style='font-size:30px;'>Id Do Treino:</h1>
+          <select name="Treinos" id="Treinos">
+            {% for treino in user_treinos %}
+            <option value="{{treino.id}}">{{treino.id}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <br>
+        <div class='buttons'>
+          <input type="submit" value='Visualizar' style='left:45.9%;'></input>
+        </div>
+      </section>
+     </form>
+     <br><br>
+    <h1>Voltar para <a href="/accounts/perfil">Perfil</a></h1>
+    {% include './form_footer.html' %}
+  </body>
+</html>
