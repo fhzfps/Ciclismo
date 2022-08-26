@@ -89,3 +89,10 @@ def treino_form(request):
     form=forms.NovoTreino()
     context={'register_form':form}
     return HttpResponse(template.render(context=context,request=request))
+
+@login_required
+def editar_treinos(request):
+    template=loader.get_template('treinos.html')
+    treino_lst=request.user.Treinos
+    context={'treino_data':treino_lst}
+    return HttpResponse(template.render(context=context,request=request))

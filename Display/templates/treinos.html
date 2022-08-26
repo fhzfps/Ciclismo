@@ -1,0 +1,33 @@
+{% load static %}
+<!doctype html>
+<html>
+  <head>
+    {% include 'HomeHeader.html' %}
+  </head>
+  <body>
+    {% include 'HomeNavbar.html' %}
+    <section class='flex_col_center' id='tteste'>
+    <div class='card'>
+      <table class="fixed_header">
+        <thead>
+          <tr>
+            <th scope='col'>Id</th>
+            <th scope='col'>Duração (Segundos)</th>
+            <th scope='col'>Potência Média</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for treino in treino_data %}
+          <tr>
+            <td data-label='Id'>{{treino.id}}</td>
+            <td data-label='Duração(Segundos)'>{{treino.duracao_s}}</td>
+            <td data-label='Potência Média'>{{treino.PM}}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+    {% include 'HomeFooter.html' %}
+  </body>
+</html>
