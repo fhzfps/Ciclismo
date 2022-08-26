@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required,user_passes_test
 from django.contrib.auth.forms import UserCreationForm
 from . import models
 from . import forms
-
+from .BikeUtils import BikeAnalyze
 #Teste se usuário possui permissão completa
 def supuser(user):
     return user.is_superuser
@@ -51,5 +51,41 @@ def perfil_form(request):
         else:
             return HttpResponse(template.render(context={'register_form':form},request=request))
     form=forms.NovoPerfil()
+    context={'register_form':form}
+    return HttpResponse(template.render(context=context,request=request))
+
+@login_required
+def treino_form(request):
+    template=loader.get_template('registration/treino_form.html')
+    if request.method=='POST':
+        form=forms.NovoTreino(request.POST,request.FILES)
+        form.usuario=request.user
+        form.ftp=request.user.perfil.ftp
+        if form.is_valid():
+            treino=form.save()
+            try:
+                relatorio=BikeAnalyze(file=treino.arquivo,file_type=treino.tipo_arquivo,ftp=treino.ftp).gerar_relatorio()
+                treino.duracao_s=relatorio['duracao_s']
+                treino.NP=relatorio['NP']
+                treino.IF=relatorio['IF']
+                treino.PM=relatorio['PM']
+                treino.TTS=relatorio['TTS']
+                treino.CM=relatorio['CM']
+                treino.PMax=relatorio['PMax']
+                treino.PMin=relatorio['PMin']
+                treino.CMax=relatorio['CMax']
+                treino.CMin=relatorio['CMin']
+                treino.Calorias=relatorio['Calorias']
+                treino.Distancia=relatorio['Distancia']
+                treino.GraficoPot=relatorio['GraficoPot']
+                treino.GraficoCad=relatorio['GraficoCad']
+                treino.GraficoZonas=relatorio['GraficoZonas']
+                treino.save()
+            except:
+                return HttpResponse(loader.get_template('erro_analise.html').render(request=request))
+            return HttpResponseRedirect('/accounts/perfil')
+        else:
+            return HttpResponse(template.render(context={'register_form':form},request=request))
+    form=forms.NovoTreino()
     context={'register_form':form}
     return HttpResponse(template.render(context=context,request=request))
