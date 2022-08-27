@@ -9,7 +9,7 @@ class BikeAnalyze():
   Define Ferramentas de Analise de treinos de ciclismo.
   Tipos de Arquivos Disponíveis:
   .tcx
-  
+
   """
   def __init__(self,file,file_type,ftp=150):
     '''
@@ -34,7 +34,7 @@ class BikeAnalyze():
         return 6
       else:
         return 7
-      
+
     self.file=file
     self.file_type=file_type
     self.ftp=ftp
@@ -61,28 +61,28 @@ class BikeAnalyze():
       self.cadencia_media=round(self.tabela['Cadencia'].mean(),1)
       self.cadencia_maxima=round(self.tabela['Cadencia'].max(),1)
       self.cadencia_minima=round(self.tabela['Cadencia'].min(),1)
-      
+
       #Medindo Zonas para cada Ponto de Medida
       self.tabela['Zona']=self.tabela['Potencia'].apply(Zonas)
       #Porcentagem do Tempo Passado em Cada Zona
       self.zonas_pct={f'Z{i}':self.tabela[self.tabela['Zona']==i]['Intervalos'].sum().total_seconds()/self.tempo_t for i in range(1,8) if self.tabela[self.tabela['Zona']==i]['Intervalos'].sum().total_seconds()>0}
-    
+
       #Calculando Potência Normalizada
       Windows=self.tabela['Potencia'].rolling(30)
       Power_30s=Windows.mean().dropna()
       PowerAvg=round(Power_30s.mean(),0)
       self.NP=round((((Power_30s**4).mean())**0.25),0)
-    
+
       #Calculando Fator de Intensidade
       self.IF=self.NP/self.ftp
-    
+
       #Calculando TTS
       self.TTS=(self.tempo_t*self.NP*self.IF)/(self.ftp*36)
-      
+
     else:
       raise ValueError('Tipo de Arquivo Não Implementado')
-      
-    
+
+
 
   def grafico_potencia(self):
     '''
@@ -93,8 +93,8 @@ class BikeAnalyze():
                    xaxis_title='Tempo',
                    yaxis_title='Watts')
 
-    return fig.to_html(full_html=False,default_height=500,default_width=700)
-    
+    return fig.to_html(full_html=False)
+
   def grafico_cadencia(self):
     '''
     Plota um gráfico de Cadência por Tempo Decorrrido do Treino.
@@ -103,8 +103,8 @@ class BikeAnalyze():
     fig.update_layout(title='Gráfico de Cadência',
                    xaxis_title='Tempo',
                    yaxis_title='RPM')
-    return fig.to_html(full_html=False,default_height=500,default_width=700)
-  
+    return fig.to_html(full_html=False)
+
   def grafico_zonas(self):
     '''
     Plota um gráfico de Pizza do tempo passado em cada Zona.
@@ -115,10 +115,10 @@ class BikeAnalyze():
                  labels=['Pct do Tempo'])
     fig.update_traces(textposition='inside', textinfo='percent+label',hoverinfo='label+percent',
                      marker=dict(colors=colors, line=dict(color='#000000', width=2)))
-    return fig.to_html(full_html=False,default_height=500,default_width=700)
-  
+    return fig.to_html(full_html=False)
+
   def gerar_relatorio(self):
-    
+
     return {'ftp':self.ftp,'duracao_s':self.tempo_t,
             'NP':self.NP,'IF':self.IF,
             'PM':self.potencia_media,'TTS':self.TTS,
@@ -128,5 +128,3 @@ class BikeAnalyze():
             'GraficoPot':self.grafico_potencia(),
             'GraficoCad':self.grafico_cadencia(),
             'GraficoZonas':self.grafico_zonas()}
-  
-  
