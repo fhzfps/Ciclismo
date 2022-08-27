@@ -14,7 +14,7 @@
             <h1>Gráfico de Potência:</h1>
           </div>
           <div class='iframe-container'>
-            <iframe class='responsive-iframe'>{{treino.GraficoPot|safe}}</iframe>
+            <iframe class='responsive-iframe' srcdoc="{{treino.GraficoPot|safe}}"></iframe>
           </div>
         </div>
         <br><br>
@@ -23,7 +23,7 @@
             <h1>Gráfico de Cadência:</h1>
           </div>
           <div class='iframe-container'>
-            <iframe class='responsive-iframe'>{{treino.GraficoCad|safe}}</iframe>
+            <iframe class='responsive-iframe' srcdoc="{{treino.GraficoCad|safe}}"></iframe>
           </div>
         </div>
         <br><br>
@@ -32,7 +32,7 @@
             <h1>Gráfico de Zonas de Intensidade:</h1>
           </div>
           <div class='iframe-container'>
-            <iframe class='responsive-iframe'>{{treino.GraficoZonas|safe}}</iframe>
+            <iframe class='responsive-iframe' srcdoc="{{treino.GraficoZonas|safe}}"></iframe>
           </div>
         </div>
       </section>
@@ -60,9 +60,9 @@
             <br>
             <h2>Cadência Média:{{treino.CM}}</h2>
             <br>
-            <h2>Potência Máxima:{{treino.CMax}}</h2>
+            <h2>Cadência Máxima:{{treino.CMax}}</h2>
             <br>
-            <h2>Potência Mínima:{{treino.CMin}}</h2>
+            <h2>Cadência Mínima:{{treino.CMin}}</h2>
           </div>
         </div>
         <br><br>

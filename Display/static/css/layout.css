@@ -73,7 +73,7 @@ video{
       width:10%;
    }
 
-.iframe-container{
+.flex_col_center>.card>.iframe-container{
      position: relative;
      overflow: hidden;
      width: 100%;
@@ -81,7 +81,7 @@ video{
    }
 
    /* Then style the iframe to fit in the container div with full height and width */
-.responsive-iframe {
+.flex_col_center>.card>.iframe-container>iframe{
      position: absolute;
      top: 0;
      left: 0;
