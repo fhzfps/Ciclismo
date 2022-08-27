@@ -77,6 +77,6 @@
         </div>
       </section>
     {% include 'HomeFooter.html' %}
-    <script type="text/javascript">window.removeEventListener("resize");window.addEventListener("resize", function(){{Plotly.Plots.resize(document.getElementById("grafico"));}});</script>
+    <script type="text/javascript">window.removeEventListener("resize");window.addEventListener("resize",Plotly.Plots.resize(document.getElementById("grafico")));</script>
   </body>
 </html>
