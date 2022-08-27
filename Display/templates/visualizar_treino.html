@@ -13,21 +13,21 @@
           <div class='container'>
             <h1>Gráfico de Potência:</h1>
           </div>
-          {{treino.GraficoPot|safe}}
+          <div id='grafico'>{{treino.GraficoPot|safe}}</div>
         </div>
         <br><br>
         <div class='card'>
           <div class='container'>
             <h1>Gráfico de Cadência:</h1>
           </div>
-          {{treino.GraficoCad|safe}}
+          <div id='grafico'>{{treino.GraficoCad|safe}}</div>
         </div>
         <br><br>
         <div class='card'>
           <div class='container'>
             <h1>Gráfico de Zonas de Intensidade:</h1>
           </div>
-        {{treino.GraficoZonas|safe}}
+        <div id='grafico'>{{treino.GraficoZonas|safe}}</div>
         </div>
       </section>
       <section class='flex_col_stretch'>
@@ -77,5 +77,6 @@
         </div>
       </section>
     {% include 'HomeFooter.html' %}
+    <script type="text/javascript">window.removeEventListener("resize");window.addEventListener("resize", function(){{Plotly.Plots.resize(document.getElementById("grafico"));}});</script>
   </body>
 </html>
