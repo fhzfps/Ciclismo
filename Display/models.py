@@ -51,3 +51,7 @@ def criar_perfil_usuario(sender,instance,created,**kwargs):
 @receiver(post_save,sender=User)
 def salvar_perfil_usuario(sender,instance,**kwargs):
     instance.perfil.save()
+
+@receiver(models.signals.post_delete, sender=Treino)
+def remove_file_from_s3(sender, instance, using, **kwargs):
+    instance.arquivo.delete(save=False)
