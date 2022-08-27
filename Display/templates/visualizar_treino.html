@@ -7,7 +7,7 @@
   <body>
     {% include 'HomeNavbar.html' %}
       <h1>Treino #{{treino.id}}</h1>
-        <section class='flex_col_stretch'>
+        <section class='flex_col_center'>
         <div class='card'>
           <div class='container'>
             <h1>Gráfico de Potência:</h1>
@@ -28,14 +28,21 @@
           </div>
         {{treino.GraficoZonas|safe}}
         </div>
+      </section>
+      <section class='flex_col_stretch'>
         <br><br>
         <div class='card'>
           <div class='container'>
             <h1>Informações De Potência:</h1>
+            <br>
             <h2>FTP:{{treino.ftp}}</h2>
+            <br>
             <h2>Potência Normalizada (NP):{{treino.NP}}</h2>
+            <br>
             <h2>Potência Média:{{treino.PM}}</h2>
+            <br>
             <h2>Potência Máxima:{{treino.PMax}}</h2>
+            <br>
             <h2>Potência Mínima:{{treino.PMin}}</h2>
           </div>
         </div>
@@ -43,8 +50,11 @@
         <div class='card'>
           <div class='container'>
             <h1>Informações De Cadência:</h1>
+            <br>
             <h2>Cadência Média:{{treino.CM}}</h2>
+            <br>
             <h2>Potência Máxima:{{treino.CMax}}</h2>
+            <br>
             <h2>Potência Mínima:{{treino.CMin}}</h2>
           </div>
         </div>
