@@ -106,7 +106,7 @@ def deletar_treino(request,id):
 
 @login_required
 def visualizar_treino(request):
-    template=loader.get_template('meus_treinos_form.html')
+    template=loader.get_template('registration/meus_treinos_form.html')
     if request.method=='POST':
         treino=request.user.Treinos.filter(id=int(request.POST['Treinos']))
         return HttpResponse(loader.get_template('visualizar_treino.html').render(request=request,context={'treino':treino}))
