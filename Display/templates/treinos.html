@@ -21,8 +21,8 @@
         {% for treino in treino_data %}
           <tr>
             <td data-label='Id'>{{treino.id}}</td>
-            <td data-label='Duração(Segundos)'>{{treino.duracao_s}}</td>
-            <td data-label='Potência Média'>{{treino.PM}}</td>
+            <td data-label='Duração(Segundos)'>{{treino.duracao_s|floatformat:1}}</td>
+            <td data-label='Potência Média'>{{treino.PM|floatformat:1}}</td>
             <td data-label='Deletar'><a href="/accounts/perfil/editar_treinos/deletar/{{treino.id}}">X</a></td>
           </tr>
         {% endfor %}
