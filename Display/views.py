@@ -111,4 +111,4 @@ def visualizar_treino(request):
         treino=request.user.Treinos.filter(id=int(request.POST['Treinos']))
         return HttpResponse(loader.get_template('visualizar_treino.html').render(request=request,context={'treino':treino}))
     user_treinos=request.user.Treinos.all()
-    return HttpResponse(template.render(request=request,context={'user_treino':user_treinos}))
+    return HttpResponse(template.render(request=request,context={'user_treinos':user_treinos}))
