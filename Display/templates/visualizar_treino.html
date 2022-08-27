@@ -11,22 +11,22 @@
         <div class='card'>
           <div class='container'>
             <h1>Gráfico de Potência:</h1>
-            {{treino.GraficoPot}}
           </div>
+          {{treino.GraficoPot|safe}}
         </div>
         <br>
         <div class='card'>
           <div class='container'>
             <h1>Gráfico de Cadência:</h1>
-            {{treino.GraficoCad}}
           </div>
+          {{treino.GraficoCad|safe}}
         </div>
         <br>
         <div class='card'>
           <div class='container'>
             <h1>Gráfico de Zonas de Intensidade:</h1>
-            {{treino.GraficoZonas}}
           </div>
+        {{treino.GraficoZonas|safe}}
         </div>
         <br>
         <div class='card'>
@@ -65,9 +65,9 @@
             <h1>Informações Adicionais:</h1>
             <h2>Fator de Intensidade:{{treino.IF}}</h2>
             <h2>Nível de Desgaste Causado Pelo Treino (TTS):{{treino.TTS}}</h2>
-            <h2>Calorias Gastas:{{treino.Calorias}</h2>
-            <h2>Duração do Trieno em Segundos:{{treino.duracao_s}</h2>
-            <h2>Distância Percorrida em Metros:{{treino.Distancia}</h2>
+            <h2>Calorias Gastas:{{treino.Calorias}}</h2>
+            <h2>Duração do Trieno em Segundos:{{treino.duracao_s}}</h2>
+            <h2>Distância Percorrida em Metros:{{treino.Distancia}}</h2>
           </div>
         </div>
       </section>
