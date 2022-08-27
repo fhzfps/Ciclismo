@@ -9,32 +9,20 @@
     {% include 'HomeNavbar.html' %}
       <h1>Treino #{{treino.id}}</h1>
         <section class='flex_col_center'>
-        <div class='card'>
-          <div class='container'>
-            <h1>Gráfico de Potência:</h1>
-          </div>
+          <h1>Gráfico de Potência:</h1>
           <div class='iframe-container'>
             <iframe class='responsive-iframe' srcdoc="{{treino.GraficoPot|safe}}"></iframe>
           </div>
-        </div>
         <br><br>
-        <div class='card'>
-          <div class='container'>
-            <h1>Gráfico de Cadência:</h1>
-          </div>
+          <h1>Gráfico de Cadência:</h1>
           <div class='iframe-container'>
             <iframe class='responsive-iframe' srcdoc="{{treino.GraficoCad|safe}}"></iframe>
           </div>
-        </div>
         <br><br>
-        <div class='card'>
-          <div class='container'>
             <h1>Gráfico de Zonas de Intensidade:</h1>
-          </div>
           <div class='iframe-container'>
             <iframe class='responsive-iframe' srcdoc="{{treino.GraficoZonas|safe}}"></iframe>
           </div>
-        </div>
       </section>
       <section class='flex_col_stretch'>
         <br><br>
