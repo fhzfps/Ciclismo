@@ -25,11 +25,11 @@
       <section class='flex_col_center'>
         <div class='fields'>
           <h1 style='font-size:30px;'>Id Do Treino:</h1>
-          <select name="Treinos" id="Treinos">
+          <h2><select name="Treinos" id="Treinos">
             {% for treino in user_treinos %}
             <option value="{{treino.id}}">{{treino.id}}</option>
             {% endfor %}
-          </select>
+          </select></h2>
           <br>
         </div>
         <br>
