@@ -13,21 +13,27 @@
           <div class='container'>
             <h1>Gráfico de Potência:</h1>
           </div>
-          <div id='grafico'>{{treino.GraficoPot|safe}}</div>
+          <div class='iframe-container'>
+            <iframe class='responsive-iframe'>{{treino.GraficoPot|safe}}</iframe>
+          </div>
         </div>
         <br><br>
         <div class='card'>
           <div class='container'>
             <h1>Gráfico de Cadência:</h1>
           </div>
-          <div id='grafico'>{{treino.GraficoCad|safe}}</div>
+          <div class='iframe-container'>
+            <iframe class='responsive-iframe'>{{treino.GraficoCad|safe}}</iframe>
+          </div>
         </div>
         <br><br>
         <div class='card'>
           <div class='container'>
             <h1>Gráfico de Zonas de Intensidade:</h1>
           </div>
-        <div id='grafico'>{{treino.GraficoZonas|safe}}</div>
+          <div class='iframe-container'>
+            <iframe class='responsive-iframe'>{{treino.GraficoZonas|safe}}</iframe>
+          </div>
         </div>
       </section>
       <section class='flex_col_stretch'>
@@ -77,6 +83,5 @@
         </div>
       </section>
     {% include 'HomeFooter.html' %}
-    <script type="text/javascript">window.removeEventListener("resize");window.addEventListener("resize",Plotly.Plots.resize(document.getElementById("grafico")));</script>
   </body>
 </html>
