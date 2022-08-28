@@ -11,17 +11,17 @@
         <section class='flex_col_center'>
           <h1>Gráfico de Potência:</h1>
           <div class='iframe-container'>
-            <iframe class='responsive-iframe' srcdoc="{{treino.GraficoPot|safe}}"></iframe>
+            <iframe class='responsive-iframe' srcdoc=&#39;{{treino.GraficoPot|safe}}&#39;></iframe>
           </div>
         <br><br>
           <h1>Gráfico de Cadência:</h1>
           <div class='iframe-container'>
-            <iframe class='responsive-iframe' srcdoc="{{treino.GraficoCad|safe}}"></iframe>
+            <iframe class='responsive-iframe' srcdoc=&#39;{{treino.GraficoCad|safe}}&#39;></iframe>
           </div>
         <br><br>
             <h1>Gráfico de Zonas de Intensidade:</h1>
           <div class='iframe-container'>
-            <iframe class='responsive-iframe' srcdoc="{{treino.GraficoZonas|safe}}"></iframe>
+            <iframe class='responsive-iframe' srcdoc=&#39;{{treino.GraficoZonas|safe}}&#39;></iframe>
           </div>
       </section>
       <section class='flex_col_stretch'>
@@ -58,7 +58,7 @@
           <div class='container'>
             <h1>Informações Adicionais:</h1>
             <br>
-            <h2>Fator de Intensidade:{{treino.IF|floatformat:1}}</h2>
+            <h2>Fator de Intensidade:{{treino.IF|floatformat:2}}</h2>
             <br>
             <h2>Nível de Desgaste Causado Pelo Treino (TTS):{{treino.TTS|floatformat:1}}</h2>
             <br>
