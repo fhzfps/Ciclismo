@@ -38,9 +38,9 @@ class Treino(models.Model):
     CMin=models.FloatField(null=True,blank=True)
     Calorias=models.FloatField(null=True,blank=True)
     Distancia=models.FloatField(null=True,blank=True)
-    GraficoPot=models.TextField(null=True,blank=True)
-    GraficoCad=models.TextField(null=True,blank=True)
-    GraficoZonas=models.TextField(null=True,blank=True)
+    GraficoPot=models.FileField(upload_to=user_dir,null=True,blank=True)
+    GraficoCad=models.FileField(upload_to=user_dir,null=True,blank=True)
+    GraficoZonas=models.FileField(upload_to=user_dir,null=True,blank=True)
 
 #Sinais para criação/atualização de Perfil em criação/atualização de Usuário
 @receiver(post_save,sender=User)
@@ -55,3 +55,6 @@ def salvar_perfil_usuario(sender,instance,**kwargs):
 @receiver(models.signals.post_delete, sender=Treino)
 def remove_file_from_s3(sender, instance, using, **kwargs):
     instance.arquivo.delete(save=False)
+    instance.GraficoPot.delete(save=False)
+    instance.GraficoCad.delete(save=False)
+    instance.GraficoZonas.delete(save=False)
