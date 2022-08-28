@@ -93,7 +93,7 @@ class BikeAnalyze():
                    xaxis_title='Tempo',
                    yaxis_title='Watts')
 
-    return fig.to_html()
+    return fig.to_html(full_html=False)
 
   def grafico_cadencia(self):
     '''
@@ -103,7 +103,7 @@ class BikeAnalyze():
     fig.update_layout(title='Gráfico de Cadência',
                    xaxis_title='Tempo',
                    yaxis_title='RPM')
-    return fig.to_html()
+    return fig.to_html(full_html=False)
 
   def grafico_zonas(self):
     '''
@@ -116,7 +116,7 @@ class BikeAnalyze():
     fig.update_traces(textposition='inside', textinfo='percent+label',hoverinfo='label+percent',
                      marker=dict(colors=colors, line=dict(color='#000000', width=2)))
 
-    return fig.to_html()
+    return fig.to_html(full_html=False)
 
   def gerar_relatorio(self):
 
