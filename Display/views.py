@@ -78,11 +78,11 @@ def treino_form(request):
             treino.CMin=relatorio['CMin']
             treino.Calorias=relatorio['Calorias']
             treino.Distancia=relatorio['Distancia']
-            temp_file_pot=ContentFile(relatorio['GraficoPot'])
+            temp_file_pot=ContentFile(relatorio['GraficoPot'].encode('utf-8'))
             treino.GraficoPot.save(f'pot_{treino.id}.txt',temp_file_pot)
-            temp_file_cad=ContentFile(relatorio['GraficoPot'])
+            temp_file_cad=ContentFile(relatorio['GraficoCad'].encode('utf-8'))
             treino.GraficoCad.save(f'cad_{treino.id}.txt',temp_file_cad)
-            temp_file_zonas=ContentFile(relatorio['GraficoPot'])
+            temp_file_zonas=ContentFile(relatorio['GraficoZonas'].encode('utf-8'))
             treino.GraficoZonas.save(f'zonas_{treino.id}.txt',temp_file_zonas)
             treino.save()
             #except:
