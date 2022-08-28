@@ -79,11 +79,11 @@ def treino_form(request):
             treino.Calorias=relatorio['Calorias']
             treino.Distancia=relatorio['Distancia']
             temp_file_pot=ContentFile(relatorio['GraficoPot'].encode('utf-8'))
-            treino.GraficoPot.save(f'pot_{treino.id}.txt',temp_file_pot)
+            treino.GraficoPot.save(f'pot_{treino.id}.html',temp_file_pot)
             temp_file_cad=ContentFile(relatorio['GraficoCad'].encode('utf-8'))
-            treino.GraficoCad.save(f'cad_{treino.id}.txt',temp_file_cad)
+            treino.GraficoCad.save(f'cad_{treino.id}.html',temp_file_cad)
             temp_file_zonas=ContentFile(relatorio['GraficoZonas'].encode('utf-8'))
-            treino.GraficoZonas.save(f'zonas_{treino.id}.txt',temp_file_zonas)
+            treino.GraficoZonas.save(f'zonas_{treino.id}.html',temp_file_zonas)
             treino.save()
             #except:
                 #return HttpResponse(loader.get_template('erro_analise.html').render(request=request))
