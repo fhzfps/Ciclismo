@@ -4,7 +4,6 @@ import numpy as np
 import matplotlib as mpl
 import seaborn
 import plotly.express as px
-from io import StringIO
 class BikeAnalyze():
   """
   Define Ferramentas de Analise de treinos de ciclismo.
@@ -94,7 +93,7 @@ class BikeAnalyze():
                    xaxis_title='Tempo',
                    yaxis_title='Watts')
 
-    return StringIO(fig.to_html())
+    return fig.to_html()
 
   def grafico_cadencia(self):
     '''
@@ -104,7 +103,7 @@ class BikeAnalyze():
     fig.update_layout(title='Gráfico de Cadência',
                    xaxis_title='Tempo',
                    yaxis_title='RPM')
-    return StringIO(fig.to_html())
+    return fig.to_html()
 
   def grafico_zonas(self):
     '''
@@ -117,7 +116,7 @@ class BikeAnalyze():
     fig.update_traces(textposition='inside', textinfo='percent+label',hoverinfo='label+percent',
                      marker=dict(colors=colors, line=dict(color='#000000', width=2)))
 
-    return StringIO(fig.to_html())
+    return fig.to_html()
 
   def gerar_relatorio(self):
 

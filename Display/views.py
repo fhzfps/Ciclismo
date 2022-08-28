@@ -7,6 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from . import models
 from . import forms
 from .BikeUtils import BikeAnalyze
+from io import StringIO
 #Teste se usuário possui permissão completa
 def supuser(user):
     return user.is_superuser
@@ -62,27 +63,27 @@ def treino_form(request):
         if form.is_valid():
             treino=form.save(commit=False)
             relatorio=BikeAnalyze(file=treino.arquivo,file_type=treino.tipo_arquivo,ftp=request.user.perfil.ftp).gerar_relatorio()
-            try:
-                treino.usuario=request.user
-                treino.ftp=request.user.perfil.ftp
-                treino.duracao_s=relatorio['duracao_s']
-                treino.NP=relatorio['NP']
-                treino.IF=relatorio['IF']
-                treino.PM=relatorio['PM']
-                treino.TTS=relatorio['TTS']
-                treino.CM=relatorio['CM']
-                treino.PMax=relatorio['PMax']
-                treino.PMin=relatorio['PMin']
-                treino.CMax=relatorio['CMax']
-                treino.CMin=relatorio['CMin']
-                treino.Calorias=relatorio['Calorias']
-                treino.Distancia=relatorio['Distancia']
-                treino.GraficoPot=relatorio['GraficoPot']
-                treino.GraficoCad=relatorio['GraficoCad']
-                treino.GraficoZonas=relatorio['GraficoZonas']
-                treino.save()
-            except:
-                return HttpResponse(loader.get_template('erro_analise.html').render(request=request))
+            #try:
+            treino.usuario=request.user
+            treino.ftp=request.user.perfil.ftp
+            treino.duracao_s=relatorio['duracao_s']
+            treino.NP=relatorio['NP']
+            treino.IF=relatorio['IF']
+            treino.PM=relatorio['PM']
+            treino.TTS=relatorio['TTS']
+            treino.CM=relatorio['CM']
+            treino.PMax=relatorio['PMax']
+            treino.PMin=relatorio['PMin']
+            treino.CMax=relatorio['CMax']
+            treino.CMin=relatorio['CMin']
+            treino.Calorias=relatorio['Calorias']
+            treino.Distancia=relatorio['Distancia']
+            treino.GraficoPot=StringIO(relatorio['GraficoPot'])
+            treino.GraficoCad=StringIO(relatorio['GraficoCad'])
+            treino.GraficoZonas=StringIO(relatorio['GraficoZonas'])
+            treino.save()
+            #except:
+                #return HttpResponse(loader.get_template('erro_analise.html').render(request=request))
             return HttpResponseRedirect('/accounts/perfil')
         else:
             return HttpResponse(template.render(context={'register_form':form},request=request))
