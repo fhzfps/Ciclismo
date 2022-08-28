@@ -7,7 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from . import models
 from . import forms
 from .BikeUtils import BikeAnalyze
-from io import StringIO
+from django.core.files.base import ContentFile
 #Teste se usuário possui permissão completa
 def supuser(user):
     return user.is_superuser
@@ -78,9 +78,9 @@ def treino_form(request):
             treino.CMin=relatorio['CMin']
             treino.Calorias=relatorio['Calorias']
             treino.Distancia=relatorio['Distancia']
-            treino.GraficoPot=StringIO(relatorio['GraficoPot'])
-            treino.GraficoCad=StringIO(relatorio['GraficoCad'])
-            treino.GraficoZonas=StringIO(relatorio['GraficoZonas'])
+            treino.GraficoPot=ContentFile(relatorio['GraficoPot'])
+            treino.GraficoCad=ContentFile(relatorio['GraficoCad'])
+            treino.GraficoZonas=ContentFile(relatorio['GraficoZonas'])
             treino.save()
             #except:
                 #return HttpResponse(loader.get_template('erro_analise.html').render(request=request))
