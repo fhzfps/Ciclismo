@@ -95,7 +95,7 @@ class BikeAnalyze():
     if mobile:
         return fig.to_html(default_width=300,default_height=300)
 
-    return fig.to_html(default_width=500,default_height=500)
+    return fig.to_html(default_width=800,default_height=500)
 
   def grafico_cadencia(self,mobile=False):
     '''
@@ -108,7 +108,7 @@ class BikeAnalyze():
     if mobile:
         return fig.to_html(default_width=300,default_height=300)
 
-    return fig.to_html(default_width=500,default_height=500)
+    return fig.to_html(default_width=800,default_height=500)
   def grafico_zonas(self,mobile=False):
     '''
     Plota um gráfico de Pizza do tempo passado em cada Zona.
@@ -122,7 +122,7 @@ class BikeAnalyze():
     if mobile:
         return fig.to_html(default_width=300,default_height=300)
 
-    return fig.to_html(default_width=500,default_height=500)
+    return fig.to_html(default_width=800,default_height=500)
 
   def gerar_relatorio(self):
 

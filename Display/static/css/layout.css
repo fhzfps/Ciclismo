@@ -73,22 +73,22 @@ video{
       width:10%;
    }
 
-.plotlyfull{
+.flex_col_center>.card>.plotlyfull{
   padding: 2px 16px;
   flex:1 1 auto;
 }
 
-.plotlymobile{
+.flex_col_center>.card>.plotlymobile{
   padding: 2px 16px;
   flex:1 1 auto;
   display:none;
 }
 @media screen and (max-width: 600px){
-  .plotlyfull{
+  .flex_col_center>.card>.plotlyfull{
     display:none;
   }
 
-  .plotlymobile{
+  .flex_col_center>.card>.plotlymobile{
     display:block;
   }
 }
