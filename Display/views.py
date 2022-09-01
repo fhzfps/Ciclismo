@@ -63,36 +63,36 @@ def treino_form(request):
         if form.is_valid():
             treino=form.save(commit=False)
             relatorio=BikeAnalyze(file=treino.arquivo,file_type=treino.tipo_arquivo,ftp=request.user.perfil.ftp).gerar_relatorio()
-            #try:
-            treino.usuario=request.user
-            treino.ftp=request.user.perfil.ftp
-            treino.duracao_s=relatorio['duracao_s']
-            treino.NP=relatorio['NP']
-            treino.IF=relatorio['IF']
-            treino.PM=relatorio['PM']
-            treino.TTS=relatorio['TTS']
-            treino.CM=relatorio['CM']
-            treino.PMax=relatorio['PMax']
-            treino.PMin=relatorio['PMin']
-            treino.CMax=relatorio['CMax']
-            treino.CMin=relatorio['CMin']
-            treino.Calorias=relatorio['Calorias']
-            treino.Distancia=relatorio['Distancia']
-            temp_file_pot=ContentFile(relatorio['GraficoPot'].encode('utf-8'))
-            treino.GraficoPot.save(f'pot_{treino.id}.html',temp_file_pot)
-            temp_file_cad=ContentFile(relatorio['GraficoCad'].encode('utf-8'))
-            treino.GraficoCad.save(f'cad_{treino.id}.html',temp_file_cad)
-            temp_file_zonas=ContentFile(relatorio['GraficoZonas'].encode('utf-8'))
-            treino.GraficoZonas.save(f'zonas_{treino.id}.html',temp_file_zonas)
-            temp_file_pot_mobile=ContentFile(relatorio['GraficoPotMobile'].encode('utf-8'))
-            treino.GraficoPotMobile.save(f'pot_mobile_{treino.id}.html',temp_file_pot_mobile)
-            temp_file_cad_mobile=ContentFile(relatorio['GraficoCadMobile'].encode('utf-8'))
-            treino.GraficoCadMobile.save(f'cad_mobile_{treino.id}.html',temp_file_cad_mobile)
-            temp_file_zonas_mobile=ContentFile(relatorio['GraficoZonasMobile'].encode('utf-8'))
-            treino.GraficoZonasMobile.save(f'zonas_mobile_{treino.id}.html',temp_file_zonas_mobile)
-            treino.save()
-            #except:
-                #return HttpResponse(loader.get_template('erro_analise.html').render(request=request))
+            try:
+                treino.usuario=request.user
+                treino.ftp=request.user.perfil.ftp
+                treino.duracao_s=relatorio['duracao_s']
+                treino.NP=relatorio['NP']
+                treino.IF=relatorio['IF']
+                treino.PM=relatorio['PM']
+                treino.TTS=relatorio['TTS']
+                treino.CM=relatorio['CM']
+                treino.PMax=relatorio['PMax']
+                treino.PMin=relatorio['PMin']
+                treino.CMax=relatorio['CMax']
+                treino.CMin=relatorio['CMin']
+                treino.Calorias=relatorio['Calorias']
+                treino.Distancia=relatorio['Distancia']
+                temp_file_pot=ContentFile(relatorio['GraficoPot'].encode('utf-8'))
+                treino.GraficoPot.save(f'pot_{treino.id}.html',temp_file_pot)
+                temp_file_cad=ContentFile(relatorio['GraficoCad'].encode('utf-8'))
+                treino.GraficoCad.save(f'cad_{treino.id}.html',temp_file_cad)
+                temp_file_zonas=ContentFile(relatorio['GraficoZonas'].encode('utf-8'))
+                treino.GraficoZonas.save(f'zonas_{treino.id}.html',temp_file_zonas)
+                temp_file_pot_mobile=ContentFile(relatorio['GraficoPotMobile'].encode('utf-8'))
+                treino.GraficoPotMobile.save(f'pot_mobile_{treino.id}.html',temp_file_pot_mobile)
+                temp_file_cad_mobile=ContentFile(relatorio['GraficoCadMobile'].encode('utf-8'))
+                treino.GraficoCadMobile.save(f'cad_mobile_{treino.id}.html',temp_file_cad_mobile)
+                temp_file_zonas_mobile=ContentFile(relatorio['GraficoZonasMobile'].encode('utf-8'))
+                treino.GraficoZonasMobile.save(f'zonas_mobile_{treino.id}.html',temp_file_zonas_mobile)
+                treino.save()
+            except:
+                return HttpResponse(loader.get_template('erro_analise.html').render(request=request))
             return HttpResponseRedirect('/accounts/perfil')
         else:
             return HttpResponse(template.render(context={'register_form':form},request=request))
