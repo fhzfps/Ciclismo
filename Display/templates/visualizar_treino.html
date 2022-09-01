@@ -10,18 +10,21 @@
       <h1>Treino #{{treino.id}}</h1>
         <section class='flex_col_center'>
           <h1>Gráfico de Potência:</h1>
-          <div class='iframe-container'>
-            <iframe class='responsive-iframe' src="{{treino.GraficoPot}}"></iframe>
+          <div class='plotlycontainer'>
+            {{GraficoPot|safe}}
           </div>
         <br><br>
           <h1>Gráfico de Cadência:</h1>
-          <div class='iframe-container'>
-            <iframe class='responsive-iframe' src="{{treino.GraficoCad}}"></iframe>
+          <div class='plotlycontainer'>
+            {{GraficoCad|safe}}
+          </div>
+          <div class='plotlycontainer'>
+            {{GraficoZonas|safe}}
           </div>
         <br><br>
             <h1>Gráfico de Zonas de Intensidade:</h1>
-          <div class='iframe-container'>
-            <iframe class='responsive-iframe' src="{{treino.GraficoZonas}}"></iframe>
+          <div class='plotlycontainer'>
+            {{GraficoZonas|safe}}
           </div>
       </section>
       <section class='flex_col_stretch'>
