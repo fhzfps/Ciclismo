@@ -53,18 +53,22 @@ body{
 }
 
 .plotlyfull{
+  display:block;
   visibility:visible;
 }
 
 .plotlymobile{
+  display:none;
   visibility: hidden;
 }
 @media screen and (max-width: 800px){
   .plotlyfull{
+    display:none;
     visibility: hidden;
   }
 
   .plotlymobile{
+    display:block;
     visibility:visible;
   }
 }
