@@ -136,5 +136,5 @@ class BikeAnalyze():
             'GraficoCad':self.grafico_cadencia(),
             'GraficoZonas':self.grafico_zonas(),
             'GraficoPotMobile':self.grafico_potencia(mobile=True),
-            'GraficoCadMobile':self.grafico_potencia(mobile=True),
-            'GraficoZonasMobile':self.grafico_potencia(mobile=True)}
+            'GraficoCadMobile':self.grafico_cadencia(mobile=True),
+            'GraficoZonasMobile':self.grafico_zonas(mobile=True)}
