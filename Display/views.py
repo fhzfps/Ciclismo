@@ -113,12 +113,9 @@ def visualizar_treino(request):
     template=loader.get_template('registration/meus_treinos_form.html')
     if request.method=='POST':
         treino=request.user.Treinos.get(id=int(request.POST['Treinos']))
-        with open(treino.GraficoPot,'r') as file:
-            GraficoPot=file.read()
-        with open(treino.GraficoCad,'r') as file:
-            GraficoCad=file.read()
-        with open(treino.GraficoZonas,'r') as file:
-            GraficoZonas=file.read()
+        GraficoPot=treino.GraficoPot.open('r').read()
+        GraficoCad=treino.GraficoCad.open('r').read()
+        GraficoZonas=treino.GraficoZonas.open('r').read()
         context={'GraficoPot':GraficoPot,'GraficoCad':GraficoCad,'GraficoZonas':GraficoZonas}
         return HttpResponse(loader.get_template('visualizar_treino.html').render(request=request,context=context))
     user_treinos=request.user.Treinos.all()
