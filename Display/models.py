@@ -61,3 +61,6 @@ def remove_file_from_s3(sender, instance, using, **kwargs):
     instance.GraficoPot.delete(save=False)
     instance.GraficoCad.delete(save=False)
     instance.GraficoZonas.delete(save=False)
+    instance.GraficoPotMobile.delete(save=False)
+    instance.GraficoCadMobile.delete(save=False)
+    instance.GraficoZonasMobile.delete(save=False)
