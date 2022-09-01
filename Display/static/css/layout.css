@@ -52,40 +52,19 @@ body{
   flex:1 1 auto;
 }
 
-.video_container{
-  flex:1 1 auto;
-}
-video{
-  padding: 2px 16px;
-  border:cover;
-  height:auto;
-}
-@media screen and (max-width: 800px){
-  video{
-    width:50%;
- }
- @media screen and (max-width: 650px){
-   video{
-     width:30%;
-  }
-  @media screen and (max-width: 400px){
-    video{
-      width:10%;
-   }
-
-.flex_col_center>.card>.plotlyfull{
+.plotlyfull{
   visibility:visible;
 }
 
-.flex_col_center>.card>.plotlymobile{
+.plotlymobile{
   visibility: hidden;
 }
 @media screen and (max-width: 800px){
-  .flex_col_center>.card>.plotlyfull{
+  .plotlyfull{
     visibility: hidden;
   }
 
-  .flex_col_center>.card>.plotlymobile{
+  .plotlymobile{
     visibility:visible;
   }
 }
