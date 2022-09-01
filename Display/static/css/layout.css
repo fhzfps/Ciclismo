@@ -74,21 +74,18 @@ video{
    }
 
 .flex_col_center>.card>.plotlyfull{
-  padding: 2px 16px;
-  flex:1 1 auto;
+  visibility:visible;
 }
 
 .flex_col_center>.card>.plotlymobile{
-  display:none;
-  padding: 2px 16px;
-  flex:1 1 auto;
+  visibility: hidden;
 }
 @media screen and (max-width: 800px){
   .flex_col_center>.card>.plotlyfull{
-    display:none;
+    visibility: hidden;
   }
 
   .flex_col_center>.card>.plotlymobile{
-    display:block;
+    visibility:visible;
   }
 }
