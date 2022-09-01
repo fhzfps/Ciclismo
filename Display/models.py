@@ -41,6 +41,9 @@ class Treino(models.Model):
     GraficoPot=models.FileField(upload_to=user_dir,null=True,blank=True)
     GraficoCad=models.FileField(upload_to=user_dir,null=True,blank=True)
     GraficoZonas=models.FileField(upload_to=user_dir,null=True,blank=True)
+    GraficoPotMobile=models.FileField(upload_to=user_dir,null=True,blank=True)
+    GraficoCadMobile=models.FileField(upload_to=user_dir,null=True,blank=True)
+    GraficoZonasMobile=models.FileField(upload_to=user_dir,null=True,blank=True)
 
 #Sinais para criação/atualização de Perfil em criação/atualização de Usuário
 @receiver(post_save,sender=User)

@@ -84,6 +84,12 @@ def treino_form(request):
             treino.GraficoCad.save(f'cad_{treino.id}.html',temp_file_cad)
             temp_file_zonas=ContentFile(relatorio['GraficoZonas'].encode('utf-8'))
             treino.GraficoZonas.save(f'zonas_{treino.id}.html',temp_file_zonas)
+            temp_file_pot_mobile=ContentFile(relatorio['GraficoPotMobile'].encode('utf-8'))
+            treino.GraficoPotMobile.save(f'pot_mobile_{treino.id}.html',temp_file_pot_mobile)
+            temp_file_cad_mobile=ContentFile(relatorio['GraficoCadMobile'].encode('utf-8'))
+            treino.GraficoCadMobile.save(f'cad_mobile_{treino.id}.html',temp_file_cad_mobile)
+            temp_file_zonas_mobile=ContentFile(relatorio['GraficoZonasMobile'].encode('utf-8'))
+            treino.GraficoZonasMobile.save(f'zonas_mobile_{treino.id}.html',temp_file_zonas_mobile)
             treino.save()
             #except:
                 #return HttpResponse(loader.get_template('erro_analise.html').render(request=request))
@@ -116,7 +122,12 @@ def visualizar_treino(request):
         GraficoPot=treino.GraficoPot.open('r').read()
         GraficoCad=treino.GraficoCad.open('r').read()
         GraficoZonas=treino.GraficoZonas.open('r').read()
-        context={'GraficoPot':GraficoPot,'GraficoCad':GraficoCad,'GraficoZonas':GraficoZonas}
+        GraficoPotMobile=treino.GraficoPotMobile.open('r').read()
+        GraficoCadMobile=treino.GraficoCadMobile.open('r').read()
+        GraficoZonasMobile=treino.GraficoZonasMobile.open('r').read()
+        context={'GraficoPot':GraficoPot,'GraficoCad':GraficoCad,'GraficoZonas':GraficoZonas,'treino':treino,
+                 'GraficoPotMobile':GraficoPotMobile,'GraficoCadMobile':GraficoCadMobile,
+                 'GraficoZonasMobile':GraficoZonasMobile}
         return HttpResponse(loader.get_template('visualizar_treino.html').render(request=request,context=context))
     user_treinos=request.user.Treinos.all()
     return HttpResponse(template.render(request=request,context={'user_treinos':user_treinos}))

@@ -84,7 +84,7 @@ class BikeAnalyze():
 
 
 
-  def grafico_potencia(self):
+  def grafico_potencia(self,mobile=False):
     '''
     Plota um gráfico de Potência por Tempo Decorrrido do Treino.
     '''
@@ -92,10 +92,12 @@ class BikeAnalyze():
     fig.update_layout(title='Gráfico de Potência',
                    xaxis_title='Tempo',
                    yaxis_title='Watts')
+    if mobile:
+        return fig.to_html(default_width=300,default_height=300)
 
-    return fig.to_html()
+    return fig.to_html(default_width=500,default_height=500)
 
-  def grafico_cadencia(self):
+  def grafico_cadencia(self,mobile=False):
     '''
     Plota um gráfico de Cadência por Tempo Decorrrido do Treino.
     '''
@@ -103,9 +105,11 @@ class BikeAnalyze():
     fig.update_layout(title='Gráfico de Cadência',
                    xaxis_title='Tempo',
                    yaxis_title='RPM')
-    return fig.to_html()
+    if mobile:
+        return fig.to_html(default_width=300,default_height=300)
 
-  def grafico_zonas(self):
+    return fig.to_html(default_width=500,default_height=500)
+  def grafico_zonas(self,mobile=False):
     '''
     Plota um gráfico de Pizza do tempo passado em cada Zona.
     '''
@@ -115,8 +119,10 @@ class BikeAnalyze():
                  labels=['Pct do Tempo'])
     fig.update_traces(textposition='inside', textinfo='percent+label',hoverinfo='label+percent',
                      marker=dict(colors=colors, line=dict(color='#000000', width=2)))
+    if mobile:
+        return fig.to_html(default_width=300,default_height=300)
 
-    return fig.to_html()
+    return fig.to_html(default_width=500,default_height=500)
 
   def gerar_relatorio(self):
 
@@ -128,4 +134,7 @@ class BikeAnalyze():
             'Distancia':self.distancia_t,
             'GraficoPot':self.grafico_potencia(),
             'GraficoCad':self.grafico_cadencia(),
-            'GraficoZonas':self.grafico_zonas()}
+            'GraficoZonas':self.grafico_zonas(),
+            'GraficoPotMobile':self.grafico_potencia(mobile=True),
+            'GraficoCadMobile':self.grafico_potencia(mobile=True),
+            'GraficoZonasMobile':self.grafico_potencia(mobile=True)}

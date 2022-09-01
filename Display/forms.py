@@ -46,7 +46,8 @@ class NovoTreino(forms.ModelForm):
     class Meta:
         model=models.Treino
         fields=("tipo_arquivo","arquivo",'duracao_s','NP','IF','PM','TTS','CM','PMax',
-                'PMin','CMax','CMin','Calorias','Distancia','GraficoPot','GraficoCad','GraficoZonas')
+                'PMin','CMax','CMin','Calorias','Distancia','GraficoPot','GraficoCad','GraficoZonas',
+                'GraficoPotMobile','GraficoCadMobile','GraficoZonasMobile')
 
         labels={'tipo_arquivo':'Tipo do Arquivo:','arquivo':'Upload do Arquivo:'}
     def save(self,commit=True):
